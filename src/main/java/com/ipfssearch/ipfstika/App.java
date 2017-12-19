@@ -109,6 +109,7 @@ public class App extends NanoHTTPD {
 
         // Turn URL into input stream
         URL url = uri.toURL();
+        url = new URL("https://ipfs.io/ipns/QmQCb2GGcdC2Cm36X5RjjzabNPEfFaQvE97ETNb6f24KFp");
         TikaInputStream inputStream = TikaInputStream.get(url);
 
         AutoDetectParser parser = new AutoDetectParser();
