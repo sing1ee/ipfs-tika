@@ -76,28 +76,11 @@ constructor() : NanoHTTPD("localhost", 8081) {
 
     @Throws(IOException::class)
     private fun getResponse(path: String): String {
+        println("path=${path}")
         // Generate properly escaped URL
-        val uri: URI
-
-        try {
-            uri=URI(
-                    "http",
-                    null,
-                    "localhost",
-                    8080,
-                    path, null, null
-            )
-
-        } catch (e: URISyntaxException) {
-            System.err.println("URI syntax exception:\n" + e.message)
-            throw IOException(e)
-        }
-
-        println("Fetching: " + uri.toString())
-
         // Turn URL into input stream
-        var url=uri.toURL()
-        url=URL("https://ipfs.io/ipns/QmQCb2GGcdC2Cm36X5RjjzabNPEfFaQvE97ETNb6f24KFp")
+        var url = URL("https://ipfs.io/ipfs/${path.substring(1)}")
+        println("Fetching: " + url.toString())
         val inputStream=TikaInputStream.get(url)
 
         val parser=AutoDetectParser()
@@ -112,7 +95,7 @@ constructor() : NanoHTTPD("localhost", 8081) {
         val filename=path.substring(path.lastIndexOf("/") + 1, path.length)
         metadata.set(Metadata.RESOURCE_NAME_KEY, filename)
 
-        println("Parsing: " + uri.toString() + " (" + filename + ")")
+        println("Parsing: " + url.toString() + " (" + filename + ")")
 
         try {
             parser.parse(inputStream, handler, metadata)

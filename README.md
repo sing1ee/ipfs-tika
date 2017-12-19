@@ -29,7 +29,16 @@ untar the package, then run:
 ./bin/ipfs-tika
 ```
 
+### usage
+open the follow url in your browser:
+
+```shell
+http://localhost:8081/<hash>
+```
+
 ## New Feature
 
 - gradle support
 - more detail argument for parsing
+
+
