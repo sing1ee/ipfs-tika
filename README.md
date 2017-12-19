@@ -1,18 +1,23 @@
 # ipfs-tika
-Java web application taking IPFS hashes, extracting (textual) content and metadata through Apache's Tika.
+Java/Kotlin web application taking IPFS hashes, extracting (textual) content and metadata through 
+Apache's Tika.
 
 ## Compiling
+
+### Maven
 `mvn compile`
 
-### gradle
+### Gradle
 ```shell
 gradle clean build
 ```
 
 ## Running
+
+### Maven
 `mvn exec:java -Dexec.mainClass="com.ipfssearch.ipfstika.App"`
 
-### gradle
+### Gradle
 
 ```shell
 ./gradlew run
@@ -29,7 +34,7 @@ untar the package, then run:
 ./bin/ipfs-tika
 ```
 
-### usage
+## Usage
 open the follow url in your browser:
 
 ```shell
